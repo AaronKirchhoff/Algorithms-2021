@@ -1,3 +1,5 @@
+const { Console } = require("console");
+
 // add all numbers between 1 and 100 together,
 function Allnums() {
   var tot = 0;
@@ -6,7 +8,7 @@ function Allnums() {
   }
   return tot;
 }
-console.log(Allnums())
+// console.log(Allnums())
 // 5050
 
 // Leetcode remove duplicates from sorted array 
@@ -28,5 +30,26 @@ function removeDups(nums) {
     return output;
     
 };
-console.log(removeDups([1,2,1]));
+// console.log(removeDups([1,2,1]));
 // answer nums = [1,2,3,4,_,_] so answer should be 4. 
+
+
+// 2. two nums in javascript
+// right so given an array and another integer, iteragte throught eh array and and find two numbers whose sum is equal to the lone target integer, then return the two indecies in an array.
+function twoNums(nums, target){
+  var hold = 0;
+  var myArray = [];
+  for (var i = 0; i < nums.length; i++){
+    hold = nums[i];
+    for (var b = 0; b < nums.length; b++){
+      if( hold + nums[b]  === target){
+        myArray.push(i, b);
+        console.log(myArray);
+        return myArray;
+      }
+    }
+  }
+  // im close, nums[b] + 1 ???
+
+}
+twoNums([2,7,11,15], 9);
