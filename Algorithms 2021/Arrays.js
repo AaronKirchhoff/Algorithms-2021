@@ -38,18 +38,19 @@ function removeDups(nums) {
 // right so given an array and another integer, iteragte throught eh array and and find two numbers whose sum is equal to the lone target integer, then return the two indecies in an array.
 function twoNums(nums, target){
   var hold = 0;
+  var hold2 = 1;
   var myArray = [];
   for (var i = 0; i < nums.length; i++){
     hold = nums[i];
-    for (var b = 0; b < nums.length; b++){
+    for (var b = hold2; b < nums.length; b++){
       if( hold + nums[b]  === target){
         myArray.push(i, b);
         console.log(myArray);
         return myArray;
       }
     }
+    hold2++;
   }
-  // im close, nums[b] + 1 ???
-
 }
+// twoNums([2,5,5,11], 10);
 twoNums([2,7,11,15], 9);
