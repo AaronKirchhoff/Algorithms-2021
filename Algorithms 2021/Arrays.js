@@ -52,5 +52,5 @@ function twoNums(nums, target){
     hold2++;
   }
 }
-// twoNums([2,5,5,11], 10);
-twoNums([2,7,11,15], 9);
+twoNums([2,5,5,11], 10);
+// twoNums([2,7,11,15], 9);

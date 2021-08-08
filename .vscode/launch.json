@@ -6,6 +6,13 @@
     "configurations": [
       {
         "type": "java",
+        "name": "Launch Tree",
+        "request": "launch",
+        "mainClass": "Tree",
+        "projectName": "algo-practice_b8b0ce"
+      },
+      {
+        "type": "java",
         "name": "Launch AlgosTester",
         "request": "launch",
         "mainClass": "AlgosTester",

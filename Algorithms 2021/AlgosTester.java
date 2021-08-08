@@ -1,11 +1,28 @@
 public class AlgosTester {
 
   public static void main(String[] args) {
+    // main method is the entry point for classes
 
     // 1. print 1- 255, call the class here and create new instance of the class with name Test
     Algos Test = new Algos();
     // call the function here 
-    Test.allNumbers();
-  }
+      // Test.allNumbers();
+
+      TreeNode root = new TreeNode(5);
+      System.out.println("Binary Tree Example");
+      System.out.println("Building tree with root value " + root.val);
+      Test.inorderTraversal(root, 2);
+      // Test.inorderTraversal(root, 4);
+      // Test.insert(root, 8);
+      // tree.insert(root, 6);
+      // tree.insert(root, 7);
+      // tree.insert(root, 3);
+      // tree.insert(root, 9);
+      System.out.println("Traversing tree in order");
+      // Test.inorderTraversal(root);
+                  
+                
+    }
+
   
 }
