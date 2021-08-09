@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.Arrays;
 
 // import javax.swing.tree.TreeNode;
 
@@ -50,6 +51,28 @@ public class Algos {
     return output_arr;
   }
 
+
+// 3. remove element, leetocode #27
+// so run through an array of integers, and given another int val, remove the target int from the array and return how many indecies are left. must do this inplace, not creating another array but instead changing the existing array nums as I go. pop() method removes elements from end of array, you can also push() or shift(), (delete from beginning of array) byt to remove from middle, splice(index to be removed, how many from there to remove) method. sorry that's all javascript methods. i need java. try remove(). cannot use remove with int[]. so maybe we can shift val to end of array, you dont need to remove them.
+
+// so with this solution we have two points, i and j. with every loop we ask if j is equal to val? if not, go ahead an change num[i] to be equal to num[j] and increment i++. we are essesntially comparing each index to val and shifting them by one, in the end you are left with any Vals in the end of your array.
+  public int removeElement(int[] nums, int val) {
+    int i = 0;
+    for (int j = 0; j < nums.length; j++) {
+        if (nums[j] != val) {
+            nums[i] = nums[j];
+            i++;
+            // System.out.println(Arrays.toString(nums));
+        }
+    }
+    System.out.println(Arrays.toString(nums));
+    return i;
+  }
+
+  // answer needs to be a single integer = to how many indexes are left 
+  // [2, 4, 9, 7, 9, 7]
+  // 4
+  // this output means eventually you get to a point in the array where j is equal to val, and you change it to whatever i is. the question doesn't care what that is, so long as Val is no longer in the array. intersting. and you return i because i++ is basically counting how many indecies are not equal to val. smart!
 
 }
 
