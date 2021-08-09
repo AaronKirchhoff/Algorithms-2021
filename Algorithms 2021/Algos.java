@@ -74,6 +74,26 @@ public class Algos {
   // 4
   // this output means eventually you get to a point in the array where j is equal to val, and you change it to whatever i is. the question doesn't care what that is, so long as Val is no longer in the array. intersting. and you return i because i++ is basically counting how many indecies are not equal to val. smart!
 
+// 4
+//  iwant to pass in an integer, then my output is the int reversed. 3456 = 6543. my first thought is to convert the integer and break it up to an array. then you can maybe pull in descending order i-- and create a new array?? let try to pass in an array first. must use arrayList, not array
+  public int reverse(int x) {
+    // here you convert an integer to a string
+    String temp = Integer.toString(x);
+    // System.out.println(temp);
+    int t = 0;
+    // here you create a new array the length of the string. always need to say how long the new int[] should be.
+    int[] numbers = new int[temp.length()];
+    // System.out.println(Arrays.toString(numbers));
+    for (int i=temp.length() - 1; i>=0; i--){
+      numbers[i] = temp.charAt(t) - '0';
+    // numbers.add(temp[i]);
+      t++;
+    }
+    System.out.println(Arrays.toString(numbers));
+    return x; 
+          
+  }
+
 }
 
 

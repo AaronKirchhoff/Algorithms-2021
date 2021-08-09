@@ -1,3 +1,7 @@
+import java.util.Arrays;
+
+
+
 public class AlgosTester {
 
   public static void main(String[] args) {
@@ -26,12 +30,20 @@ public class AlgosTester {
 
 
       // 3.
-      int nums[] = new int[] {8, 2, 8, 4, 9, 7};
-      int val = 8;
-      int myResult= Test.removeElement(nums, val);
-      System.out.println(myResult);
+      // int nums[] = new int[] {8, 2, 8, 4, 9, 7};
+      // int val = 8;
+      // int myResult= Test.removeElement(nums, val);
+      // System.out.println(myResult);
       // myResult = 4
 
+
+      // 4
+      // next, change the arugment from array to just an int, and convert it to an arrayList.
+      // int[] x = new int[] {1,2,3,4};
+      int x = 1234;
+      // int myReverse= Test.reverse(x);
+      // System.out.println(Arrays.toString(Test.reverse(x)));
+        Test.reverse(x);
                   
                 
     }
