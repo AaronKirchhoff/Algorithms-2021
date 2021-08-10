@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 import java.util.Arrays;
+import java.lang.StringBuilder;
 
 // import javax.swing.tree.TreeNode;
 
@@ -75,22 +76,28 @@ public class Algos {
   // this output means eventually you get to a point in the array where j is equal to val, and you change it to whatever i is. the question doesn't care what that is, so long as Val is no longer in the array. intersting. and you return i because i++ is basically counting how many indecies are not equal to val. smart!
 
 // 4
-//  iwant to pass in an integer, then my output is the int reversed. 3456 = 6543. my first thought is to convert the integer and break it up to an array. then you can maybe pull in descending order i-- and create a new array?? let try to pass in an array first. must use arrayList, not array
+//  iwant to pass in an integer, then my output is the int reversed. 3456 = 6543. my first thought is to convert the integer and break it up to an array. then you can maybe pull in descending order i-- and create a new array?? let try to pass in an array first. must use arrayList, not array. 
+// Spent hours on this, got a return of a reverse array but could NOT figure out how to convert an array back to an int. so I gave up. the following is a walkthorugh I found.
   public int reverse(int x) {
-    // here you convert an integer to a string
-    String temp = Integer.toString(x);
-    // System.out.println(temp);
-    int t = 0;
-    // here you create a new array the length of the string. always need to say how long the new int[] should be.
-    int[] numbers = new int[temp.length()];
-    // System.out.println(Arrays.toString(numbers));
-    for (int i=temp.length() - 1; i>=0; i--){
-      numbers[i] = temp.charAt(t) - '0';
-    // numbers.add(temp[i]);
-      t++;
+    // create an empty int that will be the reverse answer
+    int finalInt = 0;
+    int pop;
+
+    while( x != 0){
+      // set pop equal to x percent of 10, meaning x divided by ten and take the remainder of that. modulus?
+      //  fo example... 2345 / 10 = 234.5
+      pop = x % 10;
+      // x divided by ten
+      x /= 10;
+      // check to make sure answer is in leetcode boundaries
+      if (finalInt > Integer.MAX_VALUE/10 || finalInt == Integer.MAX_VALUE/10 && pop > 7) return 0;
+
+      if (finalInt < Integer.MIN_VALUE/10 || finalInt == Integer.MIN_VALUE/10 && pop < -8) return 0;
+      // by modulus operator by ten, your remainder is the last digit, set it equal to pop and add it to finalInt, then multiply back up by ten so you don't have a decimal. divide x by ten to get the next number to modulus operate for remainder and last digit. 
+      finalInt = (finalInt * 10) + pop;
     }
-    System.out.println(Arrays.toString(numbers));
-    return x; 
+    System.out.println(finalInt);
+    return finalInt;
           
   }
 
