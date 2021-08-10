@@ -1,6 +1,6 @@
 // import java.util.Arrays;
 
-
+// for future Java, right click and run this file to call functions from Algos.java.
 
 public class AlgosTester {
 

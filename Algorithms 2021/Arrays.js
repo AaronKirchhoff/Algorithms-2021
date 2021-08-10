@@ -1,4 +1,5 @@
 const { Console } = require("console");
+const { start } = require("repl");
 
 // add all numbers between 1 and 100 together,
 function Allnums() {
@@ -54,3 +55,41 @@ function twoNums(nums, target){
 }
 twoNums([2,5,5,11], 10);
 // twoNums([2,7,11,15], 9);
+
+// 3.
+// Gas station problem. you have two array s the same length, N. 
+// number of gas staions = [1,2,3,4,5], in a circular route.
+//  each station has gas[i] amount of fuel there
+//  you have a car with an unlimited gas tank, but it costs fuel to get from one statio nto the next. the amount of fuel is cost[i].
+// gas[i] = amount of fuel at that index/ station
+// cost[i] = cost of fuel at that index.
+// begin your journey with an empty tank at one of  gas stations.
+// given two integer arrays. gas[] and cost[],
+// return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return -1
+// also, assume there is only one right gas station to start at to make a full circle.
+//  the sum of gas must be >= sum of cost otherwise no solution exists.
+
+function gasStation(gas, cost){
+  // first thing, compare sum(gas) to sum(cost), if the total cost is higher than the amount of gas you get, there is no solution, so right away you return -1, let's check. Get sum of each array =...
+  var sum = gas.reduce(function(a, b){
+    return a + b;
+  }, 0);
+  var sum2 = cost.reduce(function(a, b){
+    return a + b;
+  }, 0);
+  if( sum < sum2) {
+    return -1;
+  }
+  var tank = 0;
+  var startingPt = 0;
+  for( var i=0; i< gas.length; i++){
+    // get the differnce between gas and cost, this will tell us if we have enough fuel to get to next station add it to our gas tank.
+    tank += gas[i] - cost[i] 
+    if( tank < 0){
+      tank = 0;
+      startingPt = i + 1;
+    }
+  }
+  return startingPt;
+}
+console.log(gasStation([1,2,3,4,5], [3,4,5,1,2]));
