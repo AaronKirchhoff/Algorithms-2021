@@ -53,7 +53,7 @@ function twoNums(nums, target){
     hold2++;
   }
 }
-twoNums([2,5,5,11], 10);
+// twoNums([2,5,5,11], 10);
 // twoNums([2,7,11,15], 9);
 
 // 3.
@@ -92,4 +92,92 @@ function gasStation(gas, cost){
   }
   return startingPt;
 }
-console.log(gasStation([1,2,3,4,5], [3,4,5,1,2]));
+// console.log(gasStation([1,2,3,4,5], [3,4,5,1,2]));
+
+
+// 4. merge two linked lists
+// now we're working with nodes and a linked list. a linked list is a lot like an array, but the values don't have indexes. to find anythin gin the linked list, you have to start from the beginning and work your way to it, which takes up time, so not super efficient, but it's easy to add or delete nodes in a linked list. so...
+//  you have two linked lists, merge them so that the result is an ascending, linked list of all the values. right...
+
+
+// we can copmare the first values in each list, and if one is smaller than the other, add it to an empty place of node in an open list we create. do this until one list ends, then append the remainder to the open list.
+// define what data and next actually mean in your node class.
+// class ListNode {
+//   constructor(val, next) {
+//     this.next = (next === undefined ? null : next);
+//     this.val = (val === undefined ? 0 : val);
+//   }
+// }
+
+// how to implement a list node in javascript
+class ListNode {
+  constructor(data) {
+      this.data = data
+      this.next = null                
+  }
+}
+
+// how to implement a linked list class in javascript
+class LinkedList{
+  constructor(){
+      this.head = null;
+  }
+  mergeTwoLists(l1,l2) {
+    let dummy = new ListNode(-1);
+    let head = dummy;
+    while(l1 !== null && l2 !== null) {
+      // keep getting 'data is undefined here'?????
+      if(l1.data < l2.data) {
+        dummy.next = l1;
+        l1 = l1.next;
+      } else {
+        dummy.next = l2;
+        l2 = l2.next;
+      }
+      dummy = dummy.next;
+    }
+    if(l1 !== null) {
+      dummy.next = l1;
+    } else {
+      dummy.next = l2;
+    }
+    console.log(head.next);
+    return head.next;
+  }
+}
+// creating an object for the linkedlist class
+var callList = new LinkedList();
+console.log(callList.mergeTwoLists([1,3,5,7], [2,4,6,8]));
+
+
+
+
+
+// function mergeTwoLists(l1,l2) {
+//   let dummy = new ListNode(-1);
+//   let head = dummy;
+//   console.log(dummy);
+//   console.log(data);
+//   console.log(next);
+//   while(l1 !== null && l2 !== null) {
+//     if(l1.data < l2.data) {
+//       dummy.next = l1;
+//       l1 = l1.next;
+//     } else {
+//       dummy.next = l2;
+//       l2 = l2.next;
+//     }
+//     dummy = dummy.next;
+//   }
+//   if(l1 !== null) {
+//     dummy.next = l1;
+//   } else {
+//     dummy.next = l2;
+//   }
+//   console.log(head.next);
+//   return head.next;
+// }
+
+// console.log(mergeTwoLists([1,3,5,7], [2,4,6,8]));
+
+
