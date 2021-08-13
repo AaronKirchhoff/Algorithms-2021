@@ -149,35 +149,17 @@ class LinkedList{
 var callList = new LinkedList();
 console.log(callList.mergeTwoLists([1,3,5,7], [2,4,6,8]));
 
-
-
-
-
-// function mergeTwoLists(l1,l2) {
-//   let dummy = new ListNode(-1);
-//   let head = dummy;
-//   console.log(dummy);
-//   console.log(data);
-//   console.log(next);
-//   while(l1 !== null && l2 !== null) {
-//     if(l1.data < l2.data) {
-//       dummy.next = l1;
-//       l1 = l1.next;
-//     } else {
-//       dummy.next = l2;
-//       l2 = l2.next;
-//     }
-//     dummy = dummy.next;
-//   }
-//   if(l1 !== null) {
-//     dummy.next = l1;
-//   } else {
-//     dummy.next = l2;
-//   }
-//   console.log(head.next);
-//   return head.next;
-// }
-
-// console.log(mergeTwoLists([1,3,5,7], [2,4,6,8]));
+// 5. leetocode 1920 build array form permuation
+var buildArray =  function(nums) {
+  ans = [];
+    for(var i=0; i< nums.length; i++){
+    //	ans[] = ans[] + nums[nums[i]];
+    ans.push(nums[nums[i]]);
+    }
+    console.log(ans);
+    return ans;
+  };
+  buildArray([0,2,1,5,3,4]);
+  
 
 
