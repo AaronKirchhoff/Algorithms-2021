@@ -146,20 +146,54 @@ class LinkedList{
   }
 }
 // creating an object for the linkedlist class
-var callList = new LinkedList();
-console.log(callList.mergeTwoLists([1,3,5,7], [2,4,6,8]));
+// var callList = new LinkedList();
+// console.log(callList.mergeTwoLists([1,3,5,7], [2,4,6,8]));
 
 // 5. leetocode 1920 build array form permuation
 var buildArray =  function(nums) {
   ans = [];
     for(var i=0; i< nums.length; i++){
-    //	ans[] = ans[] + nums[nums[i]];
     ans.push(nums[nums[i]]);
     }
     console.log(ans);
     return ans;
   };
-  buildArray([0,2,1,5,3,4]);
+  // buildArray([0,2,1,5,3,4]);
+
+  // 6 leetcode #1859 sorting the sentence.
+  // given a string with spaces in it, that is already shuffled and has corresponding indecies appended to each word, retun the original sentence in order without indeces.
+  // had to look up solution, this was tough
+
+var sortSentence = function(s) {
+  // split string into a string array with split() method
+  let arr = s.split(" ");
+  console.log(arr);
+  let minValue = 1;
+  // you must return an array, so create an empty one for now
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    // checking if minValue is equal to the Number in the index
+    if(minValue === Number(arr[i][arr[i].length-1])) {
+      // split the string index even further
+      let removeArr = arr[i].split("");
+      console.log(removeArr);
+      // splice the removeArr, at the last position in the array, and remove 1 item
+      removeArr.splice(removeArr.length-1,1)
+      // push to our result array. what to push? removeArr and join() it to result as a string, The join() method creates and returns a new string by concatenating all of the elements in an array
+      result.push(removeArr.join(''));
+      // increment by one for minValue
+      minValue++;
+      // in arr, at the i position, remove 1 item.
+      arr.splice(i,1);
+      // why is 1 = -1???
+      i = -1;
+    }     
+  }
+  console.log(result.join(' '));
+  return result.join(' ');
+};
+
+sortSentence("Myself2 Me1 I4 and3")
   
 
 
