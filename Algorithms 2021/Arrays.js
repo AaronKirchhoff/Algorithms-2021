@@ -193,7 +193,30 @@ var sortSentence = function(s) {
   return result.join(' ');
 };
 
-sortSentence("Myself2 Me1 I4 and3")
+// sortSentence("Myself2 Me1 I4 and3")
+
+// 7 concatenation of array
+// here is my brute force, accepted submission in leetcode. Time complexity is somwhere between O(n) or O(n2) so not very good, lets see if i can incorparate a JS method to speed it up.
+var getConcatenation = function(nums) {
+  ans = [];
+  for (var i=0; i<nums.length; i++){
+      ans.push(nums[i]);
+  }
+  for (var i=0; i<nums.length; i++){
+      ans.push(nums[i]);
+  }
+  console.log(ans);
+  return ans;
+};
+// getConcatenation([1,2,3,4])
+
+// ////// 2nd try, optimized for speed. for this to work, i had to set the concat method to a variable. I was setting ans = [];, then trying to concat nums to nums, then setting ans equal to nums, but that wasn't working. 
+var getConcatenation2 = function(nums) {
+  ans = nums.concat(nums);
+  console.log(ans);
+  return ans;
+};
+getConcatenation2([1,2,3,4])
   
 
 
