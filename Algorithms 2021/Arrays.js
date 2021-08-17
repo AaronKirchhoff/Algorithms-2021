@@ -208,38 +208,68 @@ var getConcatenation = function(nums) {
   console.log(ans);
   return ans;
 };
-getConcatenation([1,2,3,4])
+// getConcatenation([1,2,3,4])
 
 // ////// 2nd try, optimized for speed. for this to work, i had to set the concat method to a variable. I was setting ans = [];, then trying to concat nums to nums, then setting ans equal to nums, but that wasn't working. Big O is O(1) Nice!
 var getConcatenation2 = function(nums) {
   ans = nums.concat(nums);
   return ans;
 };
-getConcatenation2([1,2,3,4])
+// getConcatenation2([1,2,3,4])
 
 
-// 8 slowest key, leetcode #1629. this is what I came up with, but I couldn't fit all edge cases... input [1,2] "ba", didn't know how to return a lexicographically largest key if the counterrest's were the same.
+// 8 slowest key, leetcode #1629. this is what I came up with, but I couldn't fit all edge cases... input [1,2] "ba", didn't know how to return a lexicographically largest key if the counterrest's were the same. Moving on, never found a solution to this...
 var slowestKey = function(releaseTimes, keysPressed){
 	var myArr = keysPressed.split('');
 	thisKey = 0;
   counterRest = 0;
 	longestRest= 0;
+  equalRestArray = [];
 	for(var i=0; i<releaseTimes.length; i++){
     if(releaseTimes[i -1] === null){
       counterRest = releaseTimes[i];
     } else {
       counterRest = releaseTimes[i] - releaseTimes[i - 1];
     }
-    if(counterRest >= longestRest){
+    if(counterRest === longestRest){
+      equalRestArray.push(myArr[i]);
+    } else if(counterRest >= longestRest){
       longestRest = counterRest;
       thisKey = myArr[i];
     }
 	}
+  console.log(equalRestArray);
   console.log(thisKey);
 	return thisKey;
 };
 
-slowestKey([1,2],"ba");
+// slowestKey([1,2],"ba");
+
+// 9 letcode roman numerals.
+
+var romanToInt = function(s){
+  const romanMap = new Map();
+  romanMap.set('I',1);
+  romanMap.set('V',5);
+  romanMap.set('X',10);
+  romanMap.set('L',50);
+  romanMap.set('C',100);
+  romanMap.set('D',500);
+  romanMap.set('M',1000);
+  // set result equal to the last character in the string input.
+  var result = romanMap.get(s.charAt(s.length-1));
+  // iterate through the string, starting from second to last character, and decrement, building our result from the back. this way we are comparing two charcters, and if one character is less than the following char, subract it, otherwise, add that amount.
+  for (var i=s.length-2; i>=0; i--){
+    if(romanMap.get(s.charAt(i)) < romanMap.get(s.charAt(i+1))){
+      result-=romanMap.get(s.charAt(i));
+    } else {
+      result+=romanMap.get(s.charAt(i));
+    }
+  }
+  console.log(result);
+  return result;
+}
+romanToInt("MCLX");
   
 
 
