@@ -284,7 +284,25 @@ var runningSum = function(nums){
   console.log(mySum);
   return mySum;
 }
-runningSum([2,5,7,3,6]);
-  
+// runningSum([2,5,7,3,6]);
+
+// 11 leetcode 1470 shuffle array
+// i see a mistake, i needed to delete the i+n after splicing it in. also I think you're allowed to create another array, that was an ssumtion on my part. should have asked!
+var shuffleArray = function(nums, n){
+  var newArray = [];
+  var temp = n;
+  for(var i=0; i<n; i++){
+    // nums.splice(nums[i],0,nums[i+n]);
+    // console.log(nums);
+    // nums.length = n*2;
+    newArray.push(nums[i]);
+    newArray.push(nums[temp]);
+    temp++;    
+  }
+  console.log(newArray);
+  return newArray;
+}
+shuffleArray([2,5,1,3,4,7],3);
+  // [2,3,5,4,1,7]
 
 
