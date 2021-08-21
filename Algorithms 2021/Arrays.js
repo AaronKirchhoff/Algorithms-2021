@@ -269,7 +269,22 @@ var romanToInt = function(s){
   console.log(result);
   return result;
 }
-romanToInt("MCLX");
+// romanToInt("MCLX");
+
+// 10 #1480 running sum of 1d array. mock interview went well. now know differnce between == and ===. == compares two variables. but === is more strict and compares variables and their datatypes.
+var runningSum = function(nums){
+  var mySum = [];
+  for(var i=0; i<= nums.length -1; i++){
+    if(nums[i -1] == null){
+      mySum.push(nums[i]);
+    } else {
+      mySum.push(nums[i] + mySum[i-1]);
+    }
+  }
+  console.log(mySum);
+  return mySum;
+}
+runningSum([2,5,7,3,6]);
   
 
 
