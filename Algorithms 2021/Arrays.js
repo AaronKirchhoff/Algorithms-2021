@@ -302,7 +302,52 @@ var shuffleArray = function(nums, n){
   console.log(newArray);
   return newArray;
 }
-shuffleArray([2,5,1,3,4,7],3);
+// shuffleArray([2,5,1,3,4,7],3);
   // [2,3,5,4,1,7]
 
 
+  // 12
+// 771 jewels and stones leetcode #771
+var numJewels = function(jewels, stones){
+  var count = 0;
+  var jewelArr = Array.from(jewels);
+  var stonesArr = Array.from(stones);
+  for(var i=0; i< jewelArr.length; i++){
+    for(var b=0; b<=stonesArr.length; b++){
+      if(jewelArr[i] == stonesArr[b]){
+        console.log(stonesArr[b]);
+        count++;
+      }
+    }
+  }
+  console.log(count);
+  return count;
+}
+// numJewels("AB","tLirBsA");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 12 again 771 jewels and ston4s, but optimized for time complexity
+var numJewels2 = function(jewels, stones){
+  let count = 0;
+  for (let i = 0; i < stones.length; i++) {
+      if(jewels.indexOf(stones.charAt(i)) !== -1)
+          count++;
+  }
+  return count;
+}
+numJewels2("AB","tLirBsA");
