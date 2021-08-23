@@ -325,22 +325,6 @@ var numJewels = function(jewels, stones){
 }
 // numJewels("AB","tLirBsA");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // 12 again 771 jewels and ston4s, but optimized for time complexity
 var numJewels2 = function(jewels, stones){
   let count = 0;
@@ -350,4 +334,42 @@ var numJewels2 = function(jewels, stones){
   }
   return count;
 }
-numJewels2("AB","tLirBsA");
+// numJewels2("AB","tLirBsA");
+
+// 13 1431. Kids With the Greatest Number of Candies. need to check one by one. I was 99 percent there on whiteboard practice, i miss understood the question. I thought you add extra candies to all first, then compare them. but instead the question asked for you to add extracandies to one index first, then compare values. prou dof myself for writing ternary operator by memory.
+var kidsWithCandies = function(candies, extraCandies){
+  let result = [];
+  var greatestCandies = 0;
+  for(var i=0; i<candies.length; i++){
+    if(candies[i] >= greatestCandies){
+      greatestCandies = candies[i];
+    }
+  }
+  for( var b=0; b<candies.length; b++){
+    candies[b] + extraCandies < greatestCandies ? result.push(false) : result.push(true);
+  }
+  console.log(result);
+  return result;
+}
+
+kidsWithCandies([2,3,5,1,3], 3);
+// [5,6,8,4,6]
+
+
+// 14 1672. Richest Customer Wealth
+var maxWealth = function(accounts){
+  var max = 0;
+  var count = 0;
+  for(var i=0; i<accounts.length; i++){
+    for(var b=0; b<accounts[i].length; b++){
+      count = count + (accounts[i][b]);
+    }
+    if( count >= max){
+      max = count;
+    }
+    count = 0;
+  }
+  console.log(max);
+  return max;
+}
+maxWealth([[2,3,4],[1,2,3],[7,4,6]]);
