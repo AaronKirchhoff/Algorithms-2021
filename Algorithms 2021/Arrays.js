@@ -1,4 +1,5 @@
 const { Console } = require("console");
+const { stringify } = require("querystring");
 const { start } = require("repl");
 
 // add all numbers between 1 and 100 together,
@@ -352,8 +353,17 @@ var kidsWithCandies = function(candies, extraCandies){
   return result;
 }
 
-kidsWithCandies([2,3,5,1,3], 3);
+// kidsWithCandies([2,3,5,1,3], 3);
 // [5,6,8,4,6]
+
+
+
+
+
+
+
+
+
 
 
 // 14 1672. Richest Customer Wealth
@@ -372,4 +382,38 @@ var maxWealth = function(accounts){
   console.log(max);
   return max;
 }
-maxWealth([[2,3,4],[1,2,3],[7,4,6]]);
+// maxWealth([[2,3,4],[1,2,3],[7,4,6]]);
+
+
+
+
+
+
+// 15 mock interview with kristin 8/23/21
+// determine if a string im given is a palandrome. 'racecar', expecting true or false. determine is importnant, means boolean.
+// edge cases, like capitol letters, set everything to lower case
+var palindrome = function(pal){
+  // 1. consider corener cases. what if the string has capitol letters? or spaces or odd characters like &%? let's define a variable that is equal to regex expression.
+  var noChars = /[^A-Za-z0-9]/g;
+  // 2. use method .toLowerCase to change all characters to lower case. then let's also get rid of anything not regex, no spaces, no periods, etc...
+  pal = pal.toLowerCase().replace(noChars, '');
+  console.log(pal);
+  var newArray = [];
+  // 3. convert string pal to array.
+  var thisArray = Array.from(pal);
+  // 4. create for loop that iterates through thisArray, but i start from the end
+  for(var i=thisArray.length -1; i>=0; i--){
+  // 5. push that value into newArray
+    newArray.push(thisArray[i]);
+  }
+  // 6. compare each value in both arrays and if they are not equal, return false. if each value is equal till end of loop, return true.
+  for(var b=0; b< thisArray.length; b++){
+    if( newArray[b] !== thisArray[b] ){
+      console.log(false);
+      return false;
+    }
+  }
+  console.log(true);
+  return true;
+}
+palindrome("A man, a plan, a canal. Panama");
