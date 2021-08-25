@@ -39,4 +39,49 @@ var numOfPairs = function(nums) {
   console.log(count);
   return count;
 };
-numOfPairs([1,2,3,1,1,3]);
+// numOfPairs([1,2,3,1,1,3]);
+
+
+// 744. Find Smallest Letter Greater Than Target, leetcode
+// 1. create hash map of alphabet to numbers
+// 2. for loop and if statement, ask if any index value in the array is greater than the target, if nothing is, return that first value character.
+// 3. if an index value is... return that value.
+var nextGreatestLetter = function(letters, target){
+  const letterMap = new Map();
+    letterMap.set('a',1);
+    letterMap.set('b',2);
+    letterMap.set('c',3);
+    letterMap.set('d',4);
+    letterMap.set('e',5);
+    letterMap.set('f',6);
+    letterMap.set('g',7);
+    letterMap.set('h',8);
+    letterMap.set('i',9);
+    letterMap.set('j',10);
+    letterMap.set('k',11);
+    letterMap.set('l',12);
+    letterMap.set('m',13);
+    letterMap.set('n',14);
+    letterMap.set('o',15);
+    letterMap.set('p',16);
+    letterMap.set('q',17);
+    letterMap.set('r',18);
+    letterMap.set('s',19);
+    letterMap.set('t',20);
+    letterMap.set('u',21);
+    letterMap.set('v',22);
+    letterMap.set('w',23);
+    letterMap.set('x',24);
+    letterMap.set('y',25);
+    letterMap.set('z',26);
+
+  for(var i=0; i<letters.length; i++){
+    if(letterMap.get(letters[i]) > letterMap.get(target)){
+      console.log(letters[i]);
+      return letters[i];
+    }
+  }
+  console.log(letters[0]);
+  return letters[0];
+}
+nextGreatestLetter(['b','f','h','l','m'],'g');
