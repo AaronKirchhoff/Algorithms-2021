@@ -84,4 +84,4 @@ var nextGreatestLetter = function(letters, target){
   console.log(letters[0]);
   return letters[0];
 }
-nextGreatestLetter(['b','f','h','l','m'],'g');
+nextGreatestLetter(['b','f','h','l','m'],'z');

@@ -416,4 +416,69 @@ var palindrome = function(pal){
   console.log(true);
   return true;
 }
-palindrome("A man, a plan, a canal. Panama");
+// palindrome("A man, a plan, a canal. Panama");
+
+
+// 4. 3Sum 
+// compare three values in an integer array. all values must not be equal to eachother, can;t be the same. and. when you add them up, == 0.
+// questions i can ask are, will the input ever be empty? is that a corner case i have to consider? does it include negeative integers? always? if there is no solution, return what? am i reaturning indexes or values? am i returning an array? in order? can I have mulitple answers?
+// pseudo code == does this value, plus any other two values equal 0?
+// if they do, push them to an empty array, and push them again to a bigger array of arrays. maybe delete the small array and then loop again.
+//  it feels like 3 for loops... 
+
+var threeSum = function(nums){
+  // didn't add if empty return empty array
+  // didn't check to ask if they are the same values, they cannot be.
+  var tempArr = [];
+  var ansArr = [];
+  if (nums.length < 3) return ansArr;
+  // sort ascending will make it easier..
+  nums = nums.sort((a, b) => a - b);
+  for(var i=0; i< nums.length; i++){
+    for(var j=1; j< nums.length -2; j++){
+      if(nums[i]+nums[j]+nums[j+1] == 0){
+        tempArr.push(nums[i],nums[j],nums[j+1]);
+        ansArr.push(tempArr);
+        tempArr = [];
+      }
+    }
+    nums.push(nums[i]);
+    nums.pop(nums[i]);
+    console.log(nums);
+  }
+  console.log(ansArr);
+  return ansArr;
+}
+// threeSum([-1,2,0,1,3]);
+
+// 3sum solution
+var threeSum = function(nums){
+const results = []
+	if (nums.length < 3) return results
+	nums = nums.sort((a, b) => a - b)
+
+	let target = 0
+
+	for (let i = 0; i < nums.length - 2; i++) {
+		if (nums[i] > target) break
+		if (i > 0 && nums[i] === nums[i - 1]) continue
+		let j = i + 1
+		let k = nums.length - 1
+		while (j < k) {
+			let sum = nums[i] + nums[j] + nums[k]
+      if (sum === target) {
+				results.push([nums[i], nums[j], nums[k]])
+				while (nums[j] === nums[j + 1]) j++
+				while (nums[k] === nums[k - 1]) k--
+				j++
+				k--
+			} else if (sum < target) {
+				j++
+			} else { // (sum > target)
+				k--
+			}
+		}
+	}
+	return results
+};
+threeSum([-1,2,0,1,3]);
