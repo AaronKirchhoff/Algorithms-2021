@@ -434,6 +434,8 @@ var threeSum = function(nums){
   if (nums.length < 3) return ansArr;
   // sort ascending will make it easier..
   nums = nums.sort((a, b) => a - b);
+  // is it possible to have a for loop that runs the length of nums, but doesn't increment? always starts at zero?
+  
   for(var i=0; i< nums.length; i++){
     for(var j=1; j< nums.length -2; j++){
       if(nums[i]+nums[j]+nums[j+1] == 0){
@@ -479,6 +481,73 @@ const results = []
 			}
 		}
 	}
+  console.log(results);
 	return results
 };
-threeSum([-1,2,0,1,3]);
+// threeSum([-1,2,0,1,3]);
+
+
+// interview prep with Kristin 8/27
+//  there are algorithm patterns to use that  are helpful
+
+// same. decide if one array is the square of the other.
+// they could be empty, the output boolean, true and false
+// taking in two arrays [2,3,4,5] , [4,9,16,25], not always the same length, watch out for cats
+// javascript object, frequency table, 
+
+var same = function(Arr1, Arr2){
+//1. check if either array is empty, return false
+// 2. make sure arrays are sorted ascending order. 
+// 3. creat for loop
+// 4 compare each index value in both arrays, and if Arr2 is !== the square of Arr1, return false.
+// return true.
+if (arr1.length !== arr2.length) return false
+
+  for (let num of arr1) {
+    let foundIndex = arr2.indexOf(num ** 2)
+
+    if (foundIndex === -1) return false
+
+    arr2.splice(foundIndex, 1)
+  }
+
+  return true
+//  this is my fist approach but best case it's O(n). instead lets create JS objects, put each array value into them and search them for squared values. this will speed up our function.
+
+//  let can be changed, const=  non changable variable
+
+// 2nd try.. Frequency counter objects
+};
+// same([2,3,4,5] , [4,9,16,25]);
+
+// 2nd try.. Frequency counter objects
+//  note let and the for loops below are wirtten for ES6 version of javascipt and won't run in today browswers.
+function squared(arr1, arr2) {
+  if (arr1.length !== arr2.length) return false
+
+  let frequencyCounter1 = {}
+  let frequencyCounter2 = {}
+
+  // Create frequencyCounter1, here is a for loop, with each iteration we're inputting values from the array into our empty object, when we do that we assign that number as a key, and give it the value (number of times it has shown up) + 1. if we encounter the same number over and over again, the count (value) will increment. || or... set the vlaue as one if it's the first time we're seeing this number in the array. I guess this is a shorthand for loop? let num of arr1? its quicker than writing for(var i=0; i<arr1.length; i++).
+  for (let num of arr1) {
+    frequencyCounter1[num] = frequencyCounter1[num] + 1 || 1
+  }
+  console.log(frequencyCounter1);
+  // { '2': 1, '3': 1, '4': 1, '5': 1 }
+
+  // Create frequencyCounter2
+  for (let num of arr2) {
+    frequencyCounter2[num] = frequencyCounter2[num] + 1 || 1
+  }
+
+  // Compare frequency counters
+  for (let key in frequencyCounter1) {
+    // asking if ! this is not in this frequencyCounter2 object... return false.
+    if (!(key ** 2 in frequencyCounter2)) return false
+
+    if (frequencyCounter1[key] !== frequencyCounter2[key ** 2]) return false
+  }
+  console.log(true);
+  return true
+}
+squared([2,3,4,5] , [4,9,16,25]);
