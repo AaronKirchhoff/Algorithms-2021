@@ -84,4 +84,25 @@ var nextGreatestLetter = function(letters, target){
   console.log(letters[0]);
   return letters[0];
 }
-nextGreatestLetter(['b','f','h','l','m'],'z');
+// nextGreatestLetter(['b','f','h','l','m'],'z');
+
+// leetcode 1365 how many numbers are smaller than the current number?
+var numOfSmall = function(arr){
+  var count = 0;
+  var newArray = [];
+  for(var j=0; j<arr.length; j++){
+    for(var b=1; b< arr.length; b++){
+      if(arr[0] > arr[b]){
+        count++;
+      }
+    }
+    arr.push(arr[0]);
+    arr.splice(0,1);
+    newArray.push(count);
+    count = 0;
+  }
+  console.log(newArray);
+  return newArray;
+}
+numOfSmall([6,7,10,15,4,3]);
+// [2,3,4,5,1,0]

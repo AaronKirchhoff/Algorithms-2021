@@ -61,3 +61,6 @@ var shuffleString = function(s, indices){
   return ans;
 }
 shuffleString('drwazi', [5,4,0,3,2,1])
+// return wizard
+
+// leetcode
