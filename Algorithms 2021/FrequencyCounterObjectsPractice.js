@@ -39,4 +39,25 @@ function firstTry(Arr){
   console.log(ans);
   return ans;
 }
-firstTry([1,3,4,3,6,2,3,2,2,2,2,2,2]);
+// firstTry([1,3,4,3,6,2,3,2,2,2,2,2,2]);
+
+
+// leetcode 1528 shuffle string
+var shuffleString = function(s, indices){
+  for(var i=0; i< indices.length; i++){
+    if(indices[i] >= indices.length){
+      return null;
+    }
+  }
+  let arrS = Array.from(s);
+  let newString = {};
+  let count = 0;
+  for (let val of indices){
+    newString[val] = arrS[count];
+    count++;
+  }
+  let ans = Object.values(newString).join('');
+  console.log(ans);
+  return ans;
+}
+shuffleString('drwazi', [5,4,0,3,2,1])

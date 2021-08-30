@@ -550,4 +550,7 @@ function squared(arr1, arr2) {
   console.log(true);
   return true
 }
-squared([2,3,4,5] , [4,9,16,25]);
+// squared([2,3,4,5] , [4,9,16,25]);
+
+
+// 
