@@ -553,4 +553,39 @@ function squared(arr1, arr2) {
 // squared([2,3,4,5] , [4,9,16,25]);
 
 
-// 
+// leetcode 1720 decode XORed array
+// firstly XOR or ^ means exclusive Or... so either side must be true but not both.
+var decode = function(encoded, first) {
+  let result = [first];
+for (let i = 0; i < encoded.length; i++) {
+  result.push(result[i] ^ encoded[i]);
+  // first pass, because they are both 1 on each side of ^, push 0
+  // 2nd pass, push 2, beacuse 2+0 = 0
+  // 3rd pass, actually i have to leave this here, i dont understand it...
+}
+console.log(result);
+return result;
+};
+// decode([1,2,3], 1);
+// [1,0,2,1]
+
+// intiger palidrmoe leetcode #9
+var intPalindrome = function(int){
+  let myFunc = num => Number(num);
+  var Arr1 = Array.from(String(int), myFunc);
+  console.log(Arr1);
+  var pointer = 0;
+  for (var i=Arr1.length-1; i>=Arr1.length/2; i--){
+    if(Arr1[pointer] !== Arr1[i]){
+      console.log(false);
+      return false;
+    }
+    pointer++;
+  }
+  console.log(true)
+  return true;
+};
+intPalindrome(10);
+// wait 0 is a palindrome???????
+
+  

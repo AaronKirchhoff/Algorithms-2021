@@ -87,6 +87,7 @@ var nextGreatestLetter = function(letters, target){
 // nextGreatestLetter(['b','f','h','l','m'],'z');
 
 // leetcode 1365 how many numbers are smaller than the current number?
+// IF YOU EVER NEED TO TAKE A VALUE AND COMPARE IT OTHER IN THE ARRAY, THIS WILL DO IT.
 var numOfSmall = function(arr){
   var count = 0;
   var newArray = [];
@@ -104,5 +105,5 @@ var numOfSmall = function(arr){
   console.log(newArray);
   return newArray;
 }
-numOfSmall([6,7,10,15,4,3]);
+// numOfSmall([6,7,10,15,4,3]);
 // [2,3,4,5,1,0]
