@@ -1,5 +1,6 @@
 function squared(arr1, arr2) {
   if (arr1.length !== arr2.length) return false
+  // you use this method because it sorts the arrays for you when you build an object, think, now that my arrays are in order in an object, what can I do? how can I compare?
   let frequencyCounter1 = {}
   let frequencyCounter2 = {}
   for (let num of arr1) {

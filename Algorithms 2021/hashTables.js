@@ -107,3 +107,30 @@ var numOfSmall = function(arr){
 }
 // numOfSmall([6,7,10,15,4,3]);
 // [2,3,4,5,1,0]
+
+
+// leetcode #1773 count items matching a rule
+var itemSearch = function(items, keyType, keyValue){
+	var count = 0;
+	if(items == null ){
+		return count;
+	}
+	const keyTypeMap = new Map();
+	keyTypeMap.set('type',0)
+	keyTypeMap.set('color',1)
+	keyTypeMap.set('name',2)
+	
+	for(var i=0; i<items.length; i++){
+		if( items[i][keyTypeMap.get(keyType)] == keyValue){
+			count++;
+		}
+	}
+	console.log(count)
+	return count;
+	// output 1
+}
+itemSearch( 
+[['truck','blue','dakota'],
+['truck','red','toyota'],
+['van','green','chrysler']],
+'type','truck');
