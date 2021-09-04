@@ -598,5 +598,23 @@ var DecomList = function(nums){
   console.log(decomArray);
   return decomArray;
 }
-DecomList([1,2,3,4,3,1]);
+// DecomList([1,2,3,4,3,1]);
+
+// 1108. Defanging an IP Address
+// Given a valid (IPv4) IP address, return a defanged version of that IP address.
+// A defanged IP address replaces every period "." with "[.]".
+var defangIP = function(address){
+  var defanged = Array.from(address);
+  console.log(defanged);
+  for(let val in address){
+    if(address[val] == '.'){
+      defanged.splice(val,1,'['+defanged[val]+']');
+    }
+  }
+  let ansArray = defanged.join("");
+  console.log(ansArray);
+  return ansArray;
+}
+defangIP("255.11.72.314");
+
   
