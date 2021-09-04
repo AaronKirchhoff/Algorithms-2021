@@ -569,7 +569,7 @@ return result;
 // decode([1,2,3], 1);
 // [1,0,2,1]
 
-// intiger palidrmoe leetcode #9
+// intiger palidrmoe leetcode #9 using two pointer technique
 var intPalindrome = function(int){
   let myFunc = num => Number(num);
   var Arr1 = Array.from(String(int), myFunc);
@@ -585,7 +585,18 @@ var intPalindrome = function(int){
   console.log(true)
   return true;
 };
-intPalindrome(10);
+// intPalindrome(10);
 // wait 0 is a palindrome???????
 
+// 1313. Decompress Run-Length Encoded List
+var DecomList = function(nums){
+  var decomArray = [];
+  for(var i=1; i<nums.length; i+=2){
+    var temp = new Array(nums[i-1]).fill(nums[i]);
+    decomArray = decomArray.concat(temp);
+  }
+  console.log(decomArray);
+  return decomArray;
+}
+DecomList([1,2,3,4,3,1]);
   

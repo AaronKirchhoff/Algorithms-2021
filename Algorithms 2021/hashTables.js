@@ -109,7 +109,7 @@ var numOfSmall = function(arr){
 // [2,3,4,5,1,0]
 
 
-// leetcode #1773 count items matching a rule
+// leetcode #1773 count items matching a rule, wrote this on paper first, only needed to change to Map() and forgot to put "" around inputs. 
 var itemSearch = function(items, keyType, keyValue){
 	var count = 0;
 	if(items == null ){
@@ -127,7 +127,6 @@ var itemSearch = function(items, keyType, keyValue){
 	}
 	console.log(count)
 	return count;
-	// output 1
 }
 itemSearch( 
 [['truck','blue','dakota'],
