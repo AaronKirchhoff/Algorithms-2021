@@ -93,7 +93,7 @@ class BinarySearchTree {
     this.count++
 
     let newNode = new TreeNode(val)
-
+// searchTre is the name of the recursive function inside of insert
     const searchTree = TreeNode => {
       // if val < TreeNode.val, go left
       if (val < TreeNode.val) {
@@ -162,3 +162,42 @@ bst.insert(34)
 bst.insert(2)
 bst.insert(6)
 console.log(bst)
+
+
+// Leetcode 100, check if two trees are the same!
+class myNode {
+  constructor(val, left, right){
+    this.val = val
+    this.left = left
+    this.right = right
+  }
+}
+class myBinaryTree {
+  constructor(val){
+    // keep track of the root by setting a new node
+    this.root = new myNode(val);
+  }
+  isSameTree(p, q) {
+    // base case, run thorugh whole tree and if no if statemnts match, return this final base case of TRUE...
+    if(p == null && q == null){
+      console.log(true);
+      return true;
+    }
+    if((p == null && q !== null || q == null && p !== null)){
+      console.log(false);
+      return false;
+    }
+    if(p.val !== q.val){
+      console.log(false);
+      return false;
+    }
+    // time to call the recursive nature of this function...
+    
+    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+  }
+};
+const myBT = new myBinaryTree(6);
+
+myBT.isSameTree([1,2,3],[1,2,3]);
+
+// isSame tree is undefined. I can get answers in leetcode, but when i try to wrote the whole code with two classes with constructors and then calling them by creating another object... it wont work.
