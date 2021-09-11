@@ -65,7 +65,7 @@
 
 
 // ************
-// 9/9/21 binary search tree starter... only for trees wher the left nodes are smaller than the ones onf the right. following code won't work for plain binary tree.
+// 9/9/21 binary search tree starter... only for trees where the left nodes are smaller than the ones onf the right. following code won't work for plain binary tree.
 // 1. define a binary tree node, every node has three properties... and a constructor method to create an instance or object of the class TreeNode
 
 // folowing this video, im at 8:29 https://www.youtube.com/watch?v=6JeuJRqKJrI
@@ -76,7 +76,7 @@ class TreeNode {
     this.right = right
   }
 }
-// 2. inorder traversal
+
 class BinarySearchTree {
   constructor(val){
     // keep track of the root by setting a new node
@@ -92,6 +92,7 @@ class BinarySearchTree {
   insert(val){
     this.count++
 
+    // create a new instance if a treeNode here if you want to insert values into our amazing tree!
     let newNode = new TreeNode(val)
 // searchTre is the name of the recursive function inside of insert
     const searchTree = TreeNode => {
@@ -118,36 +119,74 @@ class BinarySearchTree {
   }
   
   min(){
-
+    //  finding the minimum value like this only works this way in a binry search tree because the left value will always be smaller than the on sibling on the right.
+    let currentNode = this.root
+    // continue traversing left untiol no more children
+    while (currentNode.left){
+      currentNode = currentNode.left
+    }
+    return currentNode.val
   }
 
+  // same logic for finding the max value in a binary search tree, if you traverse all the way right till the end, it will be the largest value in the tree..
   max(){
-
-  }
+    let currentNode = this.root
+    while (currentNode.right){
+      currentNode = currentNode.right
+    }
+    return currentNode.val;
+  };
   
-  contains() {
+  // takes a value and checks if it exists in the tree.
+  contains(myVal) {
+    // set a varaible that stores the node we're currently looking at
+    let currentNode = this.root
+    while(currentNode){
+      if (myVal === currentNode.val){
+        return true
+      }
+      if (myVal < currentNode.val){
+        currentNode = currentNode.left
+      } else {
+        currentNode = currentNode.right
+      }
+    }
+    return false
 
   }
 
   // searching algorithms...
-  // depth first search... three kinds...
-  // inorder
+  // depth first search... three kinds... that search branch by branch
+  // inorder, left node first, root, then right. this pattern for whole tree.
   dfsInOrder(){
+    let result = []
+    // let's build a nested recursive function, like insert fucntion above.
+    const traverse = TreeNode => {
+      // if left child exists, go left again
+      if (TreeNode.left) traverse(TreeNode.left)
+      // capture root node value
+      result.push(TreeNode.val)
+      // if right child exists, go right again
+      if(TreeNode.right) traverse(TreeNode.right)
+    }
+    // need to call the recursive travers method here!!! yay!
+    traverse(this.root);
+    return result
 
   }
 
-  // preorder
+  // preorder, root, left, right this pattern for whole tree.
   dfsPreOrder(){
 
   }
 
 
-  // postorder
+  // postorder, and the pattern here is left node, right node, root last
   dfsPostOrder(){
     
   }
 
-  // And the Breadth first search...
+  // And the Breadth first search... which searches level by level. we use  Queue! and return values by level
   bfs(){
 
   }
@@ -155,13 +194,24 @@ class BinarySearchTree {
 
 };
 
-// finally here is how to call those functoins, you must create a variable, calling a new instance of the class, and inside this instance we call the funtions we want.
+// finally here is how to call those functoins, you must create a variable, calling a new instance of the class, and inside this instance we call the funtions we want. so the class BinarySearchTree is the tre im building. I can insert nodes/ values into it.
 const bst = new BinarySearchTree(15)
 
-bst.insert(34)
+bst.insert(3)
+bst.insert(36)
 bst.insert(2)
-bst.insert(6)
-console.log(bst)
+bst.insert(12)
+bst.insert(28)
+bst.insert(39)
+
+// console.log(bst);
+// console.log(bst.size());
+// console.log(bst.min());
+// console.log(bst.max());
+// console.log(bst.contains(2));
+// console.log(bst.contains(5));
+console.log(bst.dfsInOrder());
+
 
 
 // Leetcode 100, check if two trees are the same!
@@ -177,6 +227,10 @@ class myBinaryTree {
     // keep track of the root by setting a new node
     this.root = new myNode(val);
   }
+  // in order for me to even run functions inside myBinaryTree class, I need to build the tree first so mu helper fucntions have something to look at, that's why my function calls keep saying undefined, they are looking at nothing. so, every tree class must have an add function to build the tree first. 
+
+
+
   isSameTree(p, q) {
     // base case, run thorugh whole tree and if no if statemnts match, return this final base case of TRUE...
     if(p == null && q == null){
@@ -192,12 +246,12 @@ class myBinaryTree {
       return false;
     }
     // time to call the recursive nature of this function...
-    
+
     return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
   }
 };
-const myBT = new myBinaryTree(6);
+const myBT = new myBinaryTree(4);
 
-myBT.isSameTree([1,2,3],[1,2,3]);
+console.log(myBT.isSameTree((1,2,3),(1,2,3)))
 
 // isSame tree is undefined. I can get answers in leetcode, but when i try to wrote the whole code with two classes with constructors and then calling them by creating another object... it wont work.
