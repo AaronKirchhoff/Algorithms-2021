@@ -160,7 +160,7 @@ class BinarySearchTree {
   // inorder, left node first, root, then right. this pattern for whole tree.
   dfsInOrder(){
     let result = []
-    // let's build a nested recursive function, like insert fucntion above.
+    // let's build a nested recursive function, like insert function above. so let's make a function that takes in a node, TreeNode, like a starting point?
     const traverse = TreeNode => {
       // if left child exists, go left again
       if (TreeNode.left) traverse(TreeNode.left)
@@ -177,21 +177,61 @@ class BinarySearchTree {
 
   // preorder, root, left, right this pattern for whole tree.
   dfsPreOrder(){
+    let result = []
+    // then write another recursive traveerse function to push values into the array result
+    const traverse = TreeNode => {
+      // capture root node value
+      result.push(TreeNode.val)
+      // if left child exists, go left again
+      if (TreeNode.left) traverse(TreeNode.left)
+      // if right child exists, go right again
+      if(TreeNode.right) traverse(TreeNode.right)
+    }
+    traverse(this.root);
+    return result;
 
   }
 
 
   // postorder, and the pattern here is left node, right node, root last
   dfsPostOrder(){
+    let result = []
+    // then write another recursive traveerse function to push values into the array result
+    const traverse = TreeNode => {
+      // if left child exists, go left again
+      if (TreeNode.left) traverse(TreeNode.left)
+      // if right child exists, go right again
+      if(TreeNode.right) traverse(TreeNode.right)
+      // capture root node value
+      result.push(TreeNode.val)
+    }
+    traverse(this.root);
+    return result;
     
   }
 
   // And the Breadth first search... which searches level by level. we use  Queue! and return values by level
   bfs(){
+    let result = []
+    // the queue array is like a staging area, as we travel thorugh our inputs, we don't know exactly where we are going to put it in our tree yet, cause we don't know the other values. so we stage the value in the queue and it leaves when we find values close to it in the tree.
+    let queue = []
+  // push root node into queue
+    queue.push(this.root);
+    while(queue.length){
+      let currentNode = queue.shift()
 
+      result.push(currentNode)
+
+      // if that current node has left children??
+      if(currentNode.left){
+        queue.push(currentNode.left)
+      }
+      if (currentNode.right){
+        queue.push(currentNode.right)
+      }
+    }
+    return result
   }
-
-
 };
 
 // finally here is how to call those functoins, you must create a variable, calling a new instance of the class, and inside this instance we call the funtions we want. so the class BinarySearchTree is the tre im building. I can insert nodes/ values into it.
@@ -255,3 +295,50 @@ const myBT = new myBinaryTree(4);
 console.log(myBT.isSameTree((1,2,3),(1,2,3)))
 
 // isSame tree is undefined. I can get answers in leetcode, but when i try to wrote the whole code with two classes with constructors and then calling them by creating another object... it wont work.
+
+
+// leetcode #700. Search in a Binary Search Tree, 
+// recursion with helper function
+var searchBST = function(root, val) {
+  let res = null;
+  const helper = (node) => {
+      if(!node) return;
+      if(node.val === val){
+          res = node;
+          return;
+      }
+      if(val < node.val) helper(node.left)
+      if(val > node.val) helper(node.right)
+  }
+  
+  helper(root);   
+  return res;
+};
+
+
+// 589. N-ary Tree Preorder Traversal
+
+var preorder = function(root,  ans=[]) {
+  if (!root) return ans
+  ans.push(root.val)
+  for (let child of root.children)
+      preorder(child, ans)
+  return ans
+  
+};
+
+
+
+// leetcode 144. Binary Tree Preorder Traversal
+var preorderTraversal = function(root) {
+  let result = [];
+  if (!root) return result;
+  const traverse = TreeNode => {
+    result.push(TreeNode.val);
+        // if the tree has a left node, change the TreeNode to what we're currently looking at, call traverse method again, thats recursion, and whats the first thing our traverse method does? it pushes the val. smart!!
+    if (TreeNode.left) traverse(TreeNode.left);
+    if (TreeNode.right) traverse(TreeNode.right);
+  };
+  traverse(root);
+  return result;
+};
