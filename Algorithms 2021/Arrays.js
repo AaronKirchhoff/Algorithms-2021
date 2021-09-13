@@ -615,6 +615,18 @@ var defangIP = function(address){
   console.log(ansArray);
   return ansArray;
 }
-defangIP("255.11.72.314");
+// defangIP("255.11.72.314");
 
-  
+
+// 1389. Create Target Array in the Given Order
+var createTarget = function(nums, index) {
+  let target=[]
+  for(let number of nums){
+      let idx = index.shift();
+      console.log(idx);
+      target.splice(idx,0,number)
+  }
+  console.log(target)
+  return target
+};
+createTarget([0,1,2,3,4], [0,1,2,2,1]);
