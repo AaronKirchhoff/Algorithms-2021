@@ -1,8 +1,8 @@
 // how to implement a list node in javascript
 class ListNode {
-  constructor(data) {
+  constructor(data, next) {
       this.data = data
-      this.next = null                
+      this.next = next || null                
   }
 }
 
@@ -37,3 +37,45 @@ class LinkedList{
 // creating an object for the linkedlist class
 // var callList = new LinkedList();
 // console.log(callList.mergeTwoLists([1,3,5,7], [2,4,6,8]));
+
+// ***********
+// check to see if a linked list is even or odd in length
+// create class
+// have a coutn variable that you increment with every .next. then an if statemnt modulus % asking if % 2 = 0 return even, otherwise return odd.
+// step 1. node class
+// class myListNode {
+//   constructor(data) {
+//       this.data = data
+//       this.next = null                
+//   }
+// }
+//  linked list class
+class myLinkedList{
+  constructor(){
+      this.head = null;
+  }
+  evenCheck(){
+    const linkedList = {
+      val: 5,
+      next: {
+        val: 3,
+        next: {
+          val: 7,
+          next: {
+            val: 10,
+            next: null,
+          },
+        },
+      },
+    };
+    let currentNode = linkedList;
+    let count = 0; 
+    while (currentNode) {
+        count++
+        currentNode = currentNode.next
+    }
+    return count % 2 == 0 ? console.log('even') : console.log('odd')
+  }
+}
+var callList = new myLinkedList();
+callList.evenCheck();
