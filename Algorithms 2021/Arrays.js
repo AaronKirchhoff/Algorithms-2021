@@ -1,4 +1,4 @@
-const { Console } = require("console");
+const { Console, count } = require("console");
 const { stringify } = require("querystring");
 const { start } = require("repl");
 
@@ -629,4 +629,26 @@ var createTarget = function(nums, index) {
   console.log(target)
   return target
 };
-createTarget([0,1,2,3,4], [0,1,2,2,1]);
+// createTarget([0,1,2,3,4], [0,1,2,2,1]);
+
+// fizzBuzz!!
+// test functoin up and including the n input
+// write a funcotin that takes in an integer.
+// for loop up to and equal to n, incrementing by one each loop
+//  conditionals, and i'll use ternary operators as clean shortcuts for code.
+function fizzBuzz(n){
+  for(var i=1; i<=n; i++){
+    if (i % 3 == 0 && i % 5 == 0) {
+      console.log('FizzBuzz')
+    } else if (i % 3 == 0 && i % 5 !== 0) {
+      console.log('Fizz')
+    } else if (i % 3 !== 0 && i% 5 == 0) {
+      console.log('Buzz');
+    } else { 
+      console.log(i);
+    }
+  }
+  return;
+}
+
+fizzBuzz(15)

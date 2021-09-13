@@ -49,7 +49,7 @@ class LinkedList{
 //       this.next = null                
 //   }
 // }
-//  linked list class
+//  linked list class find out if the list is even or odd length
 class myLinkedList{
   constructor(){
       this.head = null;
