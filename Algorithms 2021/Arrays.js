@@ -1,4 +1,5 @@
 const { Console, count } = require("console");
+const { resourceUsage } = require("process");
 const { stringify } = require("querystring");
 const { start } = require("repl");
 
@@ -651,4 +652,66 @@ function fizzBuzz(n){
   return;
 }
 
-fizzBuzz(15)
+// fizzBuzz(15)
+
+
+
+// Amazon AWS coding assessment, 9/14/21, let's do this!!!
+// need to find most optimal solution too, the pair that's the best but not over. need array of arrays, beacuse you want id's of the pairs.
+// of no pair is found... return -1 -1
+// sort array ascending
+// wait sorting the array changes the indeces... dammit!
+function busSong(rideDuration, songDuration){
+  const sortArr = songDuration.sort(function(a,b){return a-b});
+  console.log(sortArr);
+  let pointer = 0;
+  let i = sortArr.length-1
+  let result = [];
+  while (pointer < i){
+
+  // for (var i=sortArr.length-1; i>0; i--){
+    if (sortArr[pointer] + sortArr[i] == (rideDuration - 30)){
+      result.push(pointer, i)
+      pointer++;
+    } else if (sortArr[pointer] + sortArr[i] < (rideDuration - 30)){
+      pointer++;
+    } else {
+      i--;
+    }
+  }
+  result = null ? console.log([-1,-1]) : console.log(result)
+  // if (result = []){
+  //   console.log([-1,-1])
+  //   return [-1,-1]
+  // }
+  // console.log(result)
+  return result 
+};
+busSong(90, [1,10,25,20,35,60,40])
+// busSong(90, [1,7])
+// wont work if there are multiple values
+
+
+// second question
+function applicationPairs(deviceCapacity, foregroundAppList, backgroundAppList) {
+  // result = []
+  // for loop through first array and grab first one, 
+  // second nested for loop, compare first array to all others and ask if they are less than or equal to device capacity, the push the 0 index of arrays to result
+  var result = [];
+  var tempArr = [];
+  for( var i = 0; i< foregroundAppList.length; i++){
+      for( var b = 0; b<foregroundAppList.length; b++){
+          if(foregroundAppList[i][1] + backgroundAppList[b][1] <= deviceCapacity){
+            // console.log(foregroundAppList[i][1])
+              tempArr.push(foregroundAppList[i][0], backgroundAppList[b][0] )
+              console.log(tempArr)
+              result.concat(tempArr)
+              console.log(result)
+              tempArr = [];
+          }
+      }
+  }
+  console.log(result)
+  return result;
+};
+// applicationPairs(10, [[1,3],[2,5],[3,7],[4,10]], [[1,2],[2,3],[3,4],[4,5]])
