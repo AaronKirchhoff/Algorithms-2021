@@ -133,3 +133,12 @@ itemSearch(
 ['truck','red','toyota'],
 ['van','green','chrysler']],
 'type','truck');
+
+
+// hacker rank, Phone book create from google tech dev practice
+var phoneBook = function(str, int){
+  const myPhoneBook = new Map();
+  myPhoneBook.set()
+
+}
+phoneBook('samuel', 0981741)
