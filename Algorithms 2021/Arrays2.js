@@ -13,4 +13,12 @@ function sumOfOdd(arr){
     return sum;
 }  
     // Function call
-sumOfOdd([2,4,3,6,7])
+// sumOfOdd([2,4,3,6,7])
+
+// leetcode panagram, 1832
+// The Set object lets you store unique values of any type, whether primitive values or object references. but all values must be unique
+// ... the Spread operator, spread over the the object/array/string and get all its properties
+function panagramCheck(str){
+  return new Set([...str]).size === 26 ? true : false;
+}
+panagramCheck('thequickbrownfoxjumpsoverthelazydog')
