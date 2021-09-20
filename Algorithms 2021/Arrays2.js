@@ -6,6 +6,7 @@ function sumOfOdd(arr){
       // Add to the sum for each
       // contribution of the arr[i]
       sum += Math.floor(((i + 1) * (l - i) + 1) / 2) * arr[i];
+      console.log(sum)
     }
     // Return the final sum
     console.log(sum)

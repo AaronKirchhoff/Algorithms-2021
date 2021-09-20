@@ -31,4 +31,12 @@ var isUniqueOptimized = function(str) {
   console.log(true)
   return true;
 };
-isUniqueOptimized('anaconda');
+// isUniqueOptimized('anaconda');
+
+
+// URLify page 90 1.3
+function URLify(str){
+  return str.replace(/ /g,"%20");
+}
+URLify('Mr John Smith')
+
