@@ -40,6 +40,7 @@ function rotateArr(arr, jump){
 // rotateArr([7,3,4,1,2,6,9], 4)
 // but too slow
 
+
 function rotateArr2(arr, jump){
   var num = 1;
   while( num <= jump){
@@ -51,6 +52,7 @@ function rotateArr2(arr, jump){
 }
 // rotateArr2([7,3,4,1,2,6,9], 4)
 // damn still too slow.
+
 
 function rotateArr3(nums, k){
   var next = nums.unshift(...nums.splice(nums.length-1,1)) * k;
@@ -75,7 +77,7 @@ function rotateArr4(arr, k){
 
 // 5th try new tactic, reverse whole list, then reverse the k number at the front of array, this gives you the array you need to have at the front. then reverse back the array after k! Woah... no wait that didn't work i think only java can take in arguments for reverse method, sooooo...
 
-
+// HELPER METHOD CREATED FOR REVERSAL, rotate array
 const numsReverse = (nums, start, end) => {
   while( start < end){
     [nums[start], nums[end]] = [nums[end], nums[start]];

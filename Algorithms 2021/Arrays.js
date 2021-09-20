@@ -715,3 +715,6 @@ function applicationPairs(deviceCapacity, foregroundAppList, backgroundAppList) 
   return result;
 };
 // applicationPairs(10, [[1,3],[2,5],[3,7],[4,10]], [[1,2],[2,3],[3,4],[4,5]])
+
+
+
