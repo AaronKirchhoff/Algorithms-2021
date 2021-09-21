@@ -1,16 +1,92 @@
+// Linked lists are awesome, they are stored in sequential order in memory meaning each node can be stroed anywhere because they remember they are part of a bigger list. unlike an array where each element needs to be stored right nest to eachother. adding and deleting elements is easy in a linked list, but you have to search from the start head node to get to that element, where as in an array you can pull from anywhere. 
 // how to implement a list node in javascript
+// now it's a doubly linked list
 class ListNode {
-  constructor(data, next) {
-      this.data = data
-      this.next = next || null                
+  constructor(val, prev, next) {
+      this.val = val
+      this.next = next || null  
+      this.prev = prev || null              
   }
 }
-
+// https://www.youtube.com/watch?v=ChWWEncl76Y
 // how to implement a linked list class in javascript
 class LinkedList{
   constructor(){
-      this.head = null;
+      this.head = this.tail = null;
   }
+
+  // add to end of list
+  append(value) {
+    const linkedList = {
+      val: 5,
+      next: {
+        val: 3,
+        next: {
+          val: 7,
+          next: {
+            val: 10,
+            next: null,
+          },
+        },
+      },
+    };
+    // if list is empty..
+    if (!this.tail){
+      // set head and tail to be the value we pass in.
+      this.head = this.tail = new ListNode(value)
+    } else {
+      // capture current tail node in variable
+      let oldTail = this.tail
+      // set new tail/append equal to new value we passed itd in
+      this.tail = new ListNode(value)
+      // old tail points to new tail
+      oldTail.next = this.tail
+      // new tail points back to old tail for doubly linked list
+      this.tail.prev = oldTail
+    }
+    console.log(linkedList)
+    return ListNode;
+
+  }
+
+  prepend(){
+
+  }
+
+  deleteHead() {
+
+  }
+
+  deleteTail(){
+
+  }
+
+  search(){
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   mergeTwoLists(l1,l2) {
     let dummy = new ListNode(-1);
     let head = dummy;
@@ -35,8 +111,11 @@ class LinkedList{
   }
 }
 // creating an object for the linkedlist class
-// var callList = new LinkedList();
-// console.log(callList.mergeTwoLists([1,3,5,7], [2,4,6,8]));
+var callList = new LinkedList();
+callList.append(4)
+callList.append(5)
+callList.append(3)
+callList.append(8);
 
 // ***********
 // check to see if a linked list is even or odd in length
@@ -78,4 +157,49 @@ class myLinkedList{
   }
 }
 var callList = new myLinkedList();
-callList.evenCheck();
+// callList.evenCheck();
+
+
+// 237. Delete Node in a Linked List, leetcode
+// assume we have our node class, with two properties, data and Next.
+
+// then create a new class to put all your methods in.. call the constuctor to create instance of class and set our head to null.
+// all values are unique, the paramter must not be the last tail node.
+class DeleteListClass{
+  constructor(){
+    this.head=null;
+  }
+    deleteNode(list, node) {
+    // const currentList = {
+    //   val: 5,
+    //   next: {
+    //     val: 3,
+    //     next: {
+    //       val: 7,
+    //       next: {
+    //         val: 10,
+    //         next: null,
+    //       },
+    //     },
+    //   },
+    // };
+    // here creating a new node/ linked list to search through by passing list in you function call below.
+    let newInstance = new ListNode(list)
+    console.log(newInstance)
+    // if (!this.head) {
+    //   return null
+    // } else {
+      for (node in newInstance){
+      node.val = node.next.val;
+      node.next = node.next.next;
+      }
+      console.log(newInstance)
+
+    // }
+    return newInstance
+  }
+}
+const call = new DeleteListClass();
+call.deleteNode([4,6,3,7,8],3)
+
+
