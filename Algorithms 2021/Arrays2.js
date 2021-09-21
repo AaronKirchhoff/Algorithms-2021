@@ -96,5 +96,20 @@ function rotateArr5(nums, k){
   numsReverse(nums, k, nums.length-1)
   console.log(nums)
 }
-rotateArr5([1,2,3,4,5,6,7], 3)
+// rotateArr5([1,2,3,4,5,6,7], 3)
+
+// TWO POINTER, HELPER METHOD SWAP VALUES
+// 344. Reverse String, leetcode! actually did this one mostly from memory!
+const helperPointer = (s, start, end) => {
+  while (start < end){
+    [s[start], s[end]] = [s[end], s[start]];    
+    start++;
+    end--;
+  }
+}
+var reverseString = function(s) {
+  helperPointer(s, 0, s.length-1);
+  console.log(s);
+};
+reverseString(['h','e','l','l','o'])
 
