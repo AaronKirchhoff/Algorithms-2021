@@ -38,5 +38,21 @@ var isUniqueOptimized = function(str) {
 function URLify(str){
   return str.replace(/ /g,"%20");
 }
-URLify('Mr John Smith')
+// URLify('Mr John Smith')
 
+// 1.6 string compression page 91
+function stringComp(str){
+  var count = 1;
+  var result = "";
+  for (var i=0; i<str.length; i++){
+    if (str.charAt(i) == str.charAt(i+1)){
+      count++
+    } else {
+      result += str.charAt(i) + count;
+      count = 1;
+    }
+  }
+  console.log(result >= str ? str : result);
+  return result >= str ? str : result
+}
+stringComp("aabcccccaa")

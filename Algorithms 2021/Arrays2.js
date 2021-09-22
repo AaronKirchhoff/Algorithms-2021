@@ -111,5 +111,7 @@ var reverseString = function(s) {
   helperPointer(s, 0, s.length-1);
   console.log(s);
 };
-reverseString(['h','e','l','l','o'])
+// reverseString(['h','e','l','l','o'])
+
+
 
