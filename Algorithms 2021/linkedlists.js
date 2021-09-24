@@ -12,24 +12,27 @@ class ListNode {
 // how to implement a linked list class in javascript
 class LinkedList{
   constructor(){
-      this.head = this.tail = null;
+    this.head = this.tail = null;
   }
 
   // add to end of list
   append(value) {
-    const linkedList = {
-      val: 5,
-      next: {
-        val: 3,
-        next: {
-          val: 7,
-          next: {
-            val: 10,
-            next: null,
-          },
-        },
-      },
-    };
+  //   const linkedList = {
+  //     val: 5,
+  //     next: {
+  //       val: 3,
+  //       next: {
+  //         val: 7,
+  //         next: {
+  //           val: 10,
+  //           next: {
+  //             val: 11,
+  //               next: null,
+  //           },
+  //         },
+  //       },
+  //     },
+  //   };
     // if list is empty..
     if (!this.tail){
       // set head and tail to be the value we pass in.
@@ -44,8 +47,7 @@ class LinkedList{
       // new tail points back to old tail for doubly linked list
       this.tail.prev = oldTail
     }
-    console.log(linkedList)
-    return ListNode;
+    // return ListNode;
 
   }
 
@@ -66,6 +68,38 @@ class LinkedList{
 
   }
 
+  // leetcode 876
+  middleOfList(){
+    if(!this.head){
+      return null
+    } else {
+      // if you iterarte through your list by changing this.head, head will be the last node for the rest of the function. if you want to iterate through again, you need to first set a variable to capture the head node to work with that instead.
+      let headNode = this.head
+      let listLength = 1;
+      while(headNode.next){
+        headNode = headNode.next
+        listLength++;
+      }
+      listLength = listLength/2
+      if((listLength % 2) != 0) {
+        listLength = listLength -.5;
+      }
+      let deleteNumberOfTimes = parseInt(listLength);
+      while (deleteNumberOfTimes){
+        this.head = this.head.next;
+        deleteNumberOfTimes--;
+      }
+    }
+    return this.head;
+  }
+
+  // lettcodes answer for 876 middle or list
+  // slow = fast = head;
+  //   while (fast && fast.next) {
+  //       slow = slow.next;
+  //       fast = fast.next.next;
+  //   }
+  //   return slow;
 
 
 
@@ -112,10 +146,17 @@ class LinkedList{
 }
 // creating an object for the linkedlist class
 var callList = new LinkedList();
-callList.append(4)
+callList.append(4);
 callList.append(5)
 callList.append(3)
+callList.append(7)
+callList.append(9)
+
+callList.append(9)
 callList.append(8);
+
+callList.middleOfList()
+console.log(callList)
 
 // ***********
 // check to see if a linked list is even or odd in length
@@ -199,7 +240,7 @@ class DeleteListClass{
     return newInstance
   }
 }
-const call = new DeleteListClass();
-call.deleteNode([4,6,3,7,8],3)
+// const call = new DeleteListClass();
+// call.deleteNode([4,6,3,7,8],3)
 
 
