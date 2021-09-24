@@ -243,4 +243,32 @@ class DeleteListClass{
 // const call = new DeleteListClass();
 // call.deleteNode([4,6,3,7,8],3)
 
+// leetcode reverse linked list, 9.24.21, #206
+  function reverseList() {
+    let prev = null;
+    let curr = head;
+    while (curr != null) {
+        let nextTemp = curr.next;
+        // here we change direction of the list by saying the current.next but before you change the value, yo have to store it.
+        curr.next = prev;
+        prev = curr;
+        curr = nextTemp;
+    }
+    return prev;
+  }
+
+  // 83. Remove Duplicates from Sorted List, leetcode
+  // pretend we're passing in a linked list as head
+  function removeDuplicates(head) {
+    // [1,2,3,3,4,5,5,6]
+    // compare values of this.head and this.head.next.value and if they are == then point to next.next. that should remove duplicates.
+    let currentNode = head
+    while(currentNode != null){
+      if(currentNode.value === currentNode.next.value){
+        currentNode.next = currentNode.next.next
+      }
+    }
+    return head
+
+  }
 
