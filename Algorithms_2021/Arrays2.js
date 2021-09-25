@@ -1,3 +1,5 @@
+const { join } = require("path/posix");
+
 function sumOfOdd(arr){
   var sum = 0;
   let l = arr.length;
@@ -111,7 +113,36 @@ var reverseString = function(s) {
   helperPointer(s, 0, s.length-1);
   console.log(s);
 };
-// reverseString(['h','e','l','l','o'])
+reverseString(['h','e','l','l','o'])
 
 
 
+// reverse integer, Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+// A signed integer is a 32-bit datum that encodes an integer in the range [-2147483648 to 2147483647]. 
+
+
+function reverseInt(x){
+  if (x < 0){
+    x = x * -1;
+  }
+  let myString = x.toString();
+  let splitString = myString.split("");
+  let reverseArray = splitString.reverse();
+  for(let val of reverseArray){
+    if (reverseArray[val] == 0){
+      reverseArray.shift();
+    } else {
+  let joinArray = reverseArray.join("");
+      console.log(joinArray);
+
+      if (joinArray > 2147483647 || joinArray < -2147483648){
+        return 0;
+      }
+    }
+  }
+  console.log(joinArray);
+  return joinArray;
+
+};
+reverseInt(-23423700)
+// -732432

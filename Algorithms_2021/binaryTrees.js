@@ -234,7 +234,7 @@ class BinarySearchTree {
   }
 };
 
-// finally here is how to call those functoins, you must create a variable, calling a new instance of the class, and inside this instance we call the funtions we want. so the class BinarySearchTree is the tre im building. I can insert nodes/ values into it.
+// finally here is how to call those functoins, you must create a variable, calling a new instance of the class, and inside this instance we call the funtions we want. so the class BinarySearchTree is the skelotn of a tree with tools/ methods in it to manipulate data, but right now its an empty shell. to put data in it to play with, you have to create an instance of the class, we called it bst here, then run those methods, the first method needs to be insert so bst has data to see and use. here, we're setting 15 as our root node. I can insert nodes/ values into it.
 const bst = new BinarySearchTree(15)
 
 bst.insert(3)
@@ -343,4 +343,37 @@ var preorderTraversal = function(root) {
   return result;
 };
 
+
+// leetcode 704, binary search. assume the array is sorted and look for a target, but treat this array like a binary search tree, where you first look at the middle element as the root node, and if target is > or < than, move your pivot counter and compare again. 
+var search = function(nums, target) {
+  let left = 0,
+      right = nums.length -1;
+
+  while (left <= right) {
+      let pivot = left + Math.trunc((right - left)/2);
+      if (nums[pivot] === target) return pivot;
+      
+      if (nums[pivot] < target) {
+          left = pivot + 1;
+          }
+      else {
+          right = pivot - 1;
+          } 
+      }
+  return -1;
+
+  
+};
+
+
+// 104 maximum depth of binary tree, not BST!
+var maxDepth = function(root){
+  if (root == null){
+    return 0;
+  }
+  let left = maxDepth(root.left);
+  let right = maxDepth(root.right);
+  // math.max returns the largest number in the given paramters, in this case, left and right variables have been keeping count of how many times they have moved down a level in our tree. 
+  return Math.max(left, right) +1
+}
 
