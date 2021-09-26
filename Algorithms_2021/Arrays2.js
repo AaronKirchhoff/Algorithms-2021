@@ -121,41 +121,48 @@ var reverseString = function(s) {
 // A signed integer is a 32-bit datum that encodes an integer in the range [-2147483648 to 2147483647]. 
 
 
-function reverseInt(x){
-  // console.log(x)
-  if (x < 0){
-    let newX = x * -1;
-  } else {
-    let myString = newX.toString();
-    let splitString = myString.split("");
-  let count = splitString.length -1;
-  while(splitString[count] == 0){
-    splitString.pop()
-    count--;
-  }
-  let reverseArray = splitString.reverse();
-  let joinArray = reverseArray.join("");
-  let newNumber = parseInt(joinArray, 10)
-  if( x < 0){
-    newNumber = newNumber * -1
-    console.log(newNumber)
-  }
-  if (newNumber > 2147483647 || newNumber < -2147483648){
-    return 0;
-  }
+// function reverseInt(x){
+//   // console.log(x)
+//   if (x < 0){
+//     let newX = x * -1;
+//   } else {
+//     let myString = newX.toString();
+//     let splitString = myString.split("");
+//   let count = splitString.length -1;
+//   while(splitString[count] == 0){
+//     splitString.pop()
+//     count--;
+//   }
+//   let reverseArray = splitString.reverse();
+//   let joinArray = reverseArray.join("");
+//   let newNumber = parseInt(joinArray, 10)
+//   if( x < 0){
+//     newNumber = newNumber * -1
+//     console.log(newNumber)
+//   }
+//   if (newNumber > 2147483647 || newNumber < -2147483648){
+//     return 0;
+//   }
   
   // console.log(newNumber)
-  return newNumber
+//   return newNumber
+// };
+// reverseInt(-23423700)
+
+// leetcode 2011
+var finalValueAfterOperations = function(operations) {
+  var x = 0;
+  console.log(operations)
+
+  for (var i = 0; i<operations.length; i++){
+    if (operations[i].includes('+')){
+        x++;            
+    } else {
+        x--;
+    }
+  }
+  console.log(x)
+  return x;
   
-
-
-      // if (joinArray > 2147483647 || joinArray < -2147483648){
-      //   return 0;
-      
-    
-  
-  // console.log(joinArray);
-  // return reverseArray;
-
 };
-reverseInt(-23423700)
+finalValueAfterOperations(["--X","X++","X++"]);

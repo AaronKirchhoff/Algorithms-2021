@@ -86,37 +86,38 @@ class BinarySearchTree {
   // let's scaffold out all our helpers methods we could use
   size(){
     return this.count
-
   }
-  // a recursive function si one that calls on itself?
+
+
+  // a recursive function is one that calls on itself
   insert(val){
     this.count++
-
     // create a new instance if a treeNode here if you want to insert values into our amazing tree!
     let newNode = new TreeNode(val)
-// searchTre is the name of the recursive function inside of insert
-    const searchTree = TreeNode => {
-      // if val < TreeNode.val, go left
-      if (val < TreeNode.val) {
-        if(!TreeNode.left){
-          TreeNode.left = newNode
+// searchTree is the name of the recursive function inside of insert, that will set values in our tree using left and right properties, and assuming here we already passed in a root node, when we created a new instance of our binarySearchTree class below.
+    const searchTree = node => {
+      // if val < node.val, go left
+      if (val < node.val) {
+        if(!node.left){
+          node.left = newNode
         } else {
-          searchTree(TreeNode.left)
+          searchTree(node.left)
         }
       }
-      // if val > TreeNode.val, go right
-      else if(val > TreeNode.val){
-        if (!TreeNode.right){
-          TreeNode.right = newNode
+      // if val > node.val, go right
+      else if(val > node.val){
+        if (!node.right){
+          node.right = newNode
         } else {
-          searchTree(TreeNode.right)
+          searchTree(node.right)
         }
       }
     }
     searchTree(this.root)
-
-
   }
+
+
+
   
   min(){
     //  finding the minimum value like this only works this way in a binry search tree because the left value will always be smaller than the on sibling on the right.
