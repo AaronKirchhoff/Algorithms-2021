@@ -165,4 +165,33 @@ var finalValueAfterOperations = function(operations) {
   return x;
   
 };
-finalValueAfterOperations(["--X","X++","X++"]);
+// finalValueAfterOperations(["--X","X++","X++"]);
+
+var plusOne = function(digits) {
+  console.log(digits)
+  for (var i=digits.length-1; i>=0; i--){
+      if(digits[i] !== 9){
+          digits[i] += 1;
+          console.log(digits)
+
+          return digits;
+      }
+      if(digits[i] == 9 && digits[i-1] !== 9){
+          if(digits[i-1] == null){
+              digits[i] = 0;
+              digits.unshift(1)
+              console.log(digits)
+
+              return digits
+          } else {
+              digits[i-1] += 1;
+              digits[i] = 0;
+              console.log(digits)
+
+              return digits;  
+          }
+      }
+      digits[i] = 0;
+  }
+};
+plusOne([9])
