@@ -1,4 +1,4 @@
-const { join } = require("path/posix");
+
 
 function sumOfOdd(arr){
   var sum = 0;
@@ -113,7 +113,7 @@ var reverseString = function(s) {
   helperPointer(s, 0, s.length-1);
   console.log(s);
 };
-reverseString(['h','e','l','l','o'])
+// reverseString(['h','e','l','l','o'])
 
 
 
@@ -122,27 +122,40 @@ reverseString(['h','e','l','l','o'])
 
 
 function reverseInt(x){
+  // console.log(x)
   if (x < 0){
-    x = x * -1;
+    let newX = x * -1;
+  } else {
+    let myString = newX.toString();
+    let splitString = myString.split("");
+  let count = splitString.length -1;
+  while(splitString[count] == 0){
+    splitString.pop()
+    count--;
   }
-  let myString = x.toString();
-  let splitString = myString.split("");
   let reverseArray = splitString.reverse();
-  for(let val of reverseArray){
-    if (reverseArray[val] == 0){
-      reverseArray.shift();
-    } else {
   let joinArray = reverseArray.join("");
-      console.log(joinArray);
-
-      if (joinArray > 2147483647 || joinArray < -2147483648){
-        return 0;
-      }
-    }
+  let newNumber = parseInt(joinArray, 10)
+  if( x < 0){
+    newNumber = newNumber * -1
+    console.log(newNumber)
   }
-  console.log(joinArray);
-  return joinArray;
+  if (newNumber > 2147483647 || newNumber < -2147483648){
+    return 0;
+  }
+  
+  // console.log(newNumber)
+  return newNumber
+  
+
+
+      // if (joinArray > 2147483647 || joinArray < -2147483648){
+      //   return 0;
+      
+    
+  
+  // console.log(joinArray);
+  // return reverseArray;
 
 };
 reverseInt(-23423700)
-// -732432
