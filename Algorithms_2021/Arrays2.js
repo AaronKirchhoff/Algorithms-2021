@@ -167,6 +167,8 @@ var finalValueAfterOperations = function(operations) {
 };
 // finalValueAfterOperations(["--X","X++","X++"]);
 
+
+// leetcode plus one
 var plusOne = function(digits) {
   console.log(digits)
   for (var i=digits.length-1; i>=0; i--){
@@ -194,4 +196,69 @@ var plusOne = function(digits) {
       digits[i] = 0;
   }
 };
-plusOne([9])
+// plusOne([9])
+
+
+// leetcode 278 first bad version.. so here it is writtne a bit diferently..
+// here we have a function that returns anonther function. I have n= length of how may products there are, guaranteed to be positive numbers ascending, not skipped values 1- 10 for example.
+// we need to check n to see is isBadVersion is present in the n list...
+var solution = function(isBadVersion) {
+  return function(n) {
+      let left = 1;
+      let right = n;
+      while(left < right) {
+          const mid = Math.floor((right + left) / 2)
+          // asking, if this value is present at this spot, then right becomes as long as mid, 
+          if(isBadVersion(mid)) {
+              right = mid
+              // if not present at location, thenyou start left at mid + 1 and reask the question, eventually you get to where isBadVersion is.
+          } else {
+              left = mid + 1
+          }
+      }
+      return right
+  };
+};
+
+
+var uniqueOccurrences = function(arr) {
+  let newArray = arr.sort(function(a, b){return a-b});
+  let count = 1;
+  let result = [];
+  for (let i=0; i<newArray.length; i++){
+      if(newArray[i] == newArray[i+1]){
+          count++
+      } else {
+          result.push(count);
+          count = 1;
+      }
+  }
+  return new Set([...result]).size == result.length ? true : false; 
+  
+  
+};
+// uniqueOccurrences([1,2])
+
+
+// leetcode boxes
+var minOperations = function(boxes) {
+  let boxCounter = 0;
+  let isFull = boxes[boxCounter]
+  let temp = 0;
+  let result = [];
+  for (let i=0; i<=boxes.length; i++){
+      for (j=0; j<=boxes.length; j++){
+          if(boxes[j] == 1){
+              temp += j
+              console.log(temp)
+          }
+          
+      }
+      temp += isFull;
+      result.push(temp);
+      temp = 0;
+      boxCounter++;
+  }
+  console.log(boxes.length)
+};
+minOperations("00101")

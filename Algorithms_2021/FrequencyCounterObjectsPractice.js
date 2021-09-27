@@ -6,6 +6,8 @@ function squared(arr1, arr2) {
   for (let num of arr1) {
     frequencyCounter1[num] = frequencyCounter1[num] + 1 || 1
   }
+  console.log(frequencyCounter1)
+
   for (let num of arr2) {
     frequencyCounter2[num] = frequencyCounter2[num] + 1 || 1
   }
@@ -13,10 +15,11 @@ function squared(arr1, arr2) {
     if (!(key ** 2 in frequencyCounter2)) return false
     if (frequencyCounter1[key] !== frequencyCounter2[key ** 2]) return false
   }
+  console.log(frequencyCounter1)
   console.log(true);
   return true
 }
-// squared([2,3,4,5] , [4,9,16,25]);
+squared([2,3,4,5,5,4] , [4,9,16,25,4,6]);
 
 
 // check to see which value shows up the most often
@@ -61,7 +64,7 @@ var shuffleString = function(s, indices){
   console.log(ans);
   return ans;
 }
-shuffleString('drwazi', [5,4,0,3,2,1])
+// shuffleString('drwazi', [5,4,0,3,2,1])
 // return wizard
 
 // leetcode
