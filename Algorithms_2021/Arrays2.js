@@ -262,3 +262,21 @@ var minOperations = function(boxes) {
   console.log(boxes.length)
 };
 minOperations("00101")
+
+// leetcode, 392 TWO POINTER TECHNIQUE, is subsequence
+var isSubsequence = function(s, t) {
+  if(s.length == 0){
+      return true
+  }
+  let leftPointer = 0;
+  let rightPointer = 0;
+  while(leftPointer < s.length && rightPointer < t.length){
+      if (s.charAt(leftPointer) == t.charAt(rightPointer)){
+          leftPointer++
+      }
+      rightPointer++
+      
+  }
+  return leftPointer == s.length ? true : false 
+  
+};
