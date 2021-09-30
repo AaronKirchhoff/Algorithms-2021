@@ -261,7 +261,7 @@ var minOperations = function(boxes) {
   }
   console.log(boxes.length)
 };
-minOperations("00101")
+// minOperations("00101")
 
 // leetcode, 392 TWO POINTER TECHNIQUE, is subsequence
 var isSubsequence = function(s, t) {
@@ -280,3 +280,32 @@ var isSubsequence = function(s, t) {
   return leftPointer == s.length ? true : false 
   
 };
+
+// 844. Backspace String Compare
+// this is really smart code. when asked to compare two strings, you could build a helper function that deos the work first of pulling out elements we dont want. start with backSpaceCompare. we set two variables rs and rt, they equal the result of a function call, the helper method above. we are going to lookat our string and if the value is not eualt to "#", push to our empty array. but if we see a "#" that means we delete an item from our array. at the end , we shuold have an array with no "#" and anytime there was a "#" we deleted an item. do this twice, and join the array at the end for two nice strings. now back to our main method..
+
+// this is the easy part,do a length error check, then for loop thorugh comparing each value in our strings, if at any time they are not equal, return false. otherwise return true!
+var stack = function (str) {
+  let mystack = [];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== '#') {
+      mystack.push(str[i]);
+    } else {
+      mystack.pop();
+    }
+  }
+  return mystack.join('');
+}
+
+function backspaceCompare(s, t) {
+  let rS = stack(s);
+  let rT = stack(t)
+  if (rS.length !== rT.length) {return false;}
+  for (let i = 0; i < rS.length; i++) {
+    if (rS[i] !== rT[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+backspaceCompare("ab##","a#d#")

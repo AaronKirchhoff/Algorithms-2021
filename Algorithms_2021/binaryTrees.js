@@ -233,7 +233,23 @@ class BinarySearchTree {
     }
     return result
   }
+
+    countNodes(root) {
+    if (root == null)
+    return 0;
+  
+    var res = 0;
+    if (root.left != null && root.right != null)
+    res++;
+  
+    res += (countNodes(root.left) + countNodes(root.right));
+    return res;
+  
+    
+  };
 };
+
+
 
 // finally here is how to call those functoins, you must create a variable, calling a new instance of the class, and inside this instance we call the funtions we want. so the class BinarySearchTree is the skelotn of a tree with tools/ methods in it to manipulate data, but right now its an empty shell. to put data in it to play with, you have to create an instance of the class, we called it bst here, then run those methods, the first method needs to be insert so bst has data to see and use. here, we're setting 15 as our root node. I can insert nodes/ values into it.
 const bst = new BinarySearchTree(15)
@@ -252,6 +268,7 @@ bst.insert(39)
 // console.log(bst.contains(2));
 // console.log(bst.contains(5));
 console.log(bst.dfsInOrder());
+console.log(bst.countNodes())
 
 
 
@@ -288,7 +305,7 @@ class myBinaryTree {
     }
     // time to call the recursive nature of this function...
 
-    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    // return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
   }
 };
 const myBT = new myBinaryTree(4);
