@@ -234,19 +234,6 @@ class BinarySearchTree {
     return result
   }
 
-    countNodes(root) {
-    if (root == null)
-    return 0;
-  
-    var res = 0;
-    if (root.left != null && root.right != null)
-    res++;
-  
-    res += (countNodes(root.left) + countNodes(root.right));
-    return res;
-  
-    
-  };
 };
 
 
@@ -268,8 +255,6 @@ bst.insert(39)
 // console.log(bst.contains(2));
 // console.log(bst.contains(5));
 console.log(bst.dfsInOrder());
-console.log(bst.countNodes())
-
 
 
 // Leetcode 100, check if two trees are the same!
@@ -395,3 +380,11 @@ var maxDepth = function(root){
   return Math.max(left, right) +1
 }
 
+
+
+// 222. Count Complete Tree Nodes, here is how to count how many nodes there in a binary tree in a one liner. pretty simple i guess
+var countNodes = function(root) {
+  return root != null ? 1 + countNodes(root.right) + countNodes(root.left) : 0;
+
+
+};

@@ -308,4 +308,21 @@ function backspaceCompare(s, t) {
   }
   return true;
 }
-backspaceCompare("ab##","a#d#")
+// backspaceCompare("ab##","a#d#")
+
+
+
+// leetcode total weatlh in accounts
+var maximumWealth = function(accounts) {
+  let resultArray = [];
+  let accountSum = 0;
+  for(let j=0; j<accounts.length; j++){
+      for (let i=0; i<accounts[0].length; i++){
+          accountSum += accounts[j][i]
+      }
+      resultArray.push(accountSum);
+      accountSum = 0;
+  }
+  return Math.max(...resultArray)
+  
+};
