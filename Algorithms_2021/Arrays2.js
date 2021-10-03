@@ -326,3 +326,40 @@ var maximumWealth = function(accounts) {
   return Math.max(...resultArray)
   
 };
+
+
+// leetcode max container of water, this is supposed to print 49! but i get 63??
+var maxArea = function(height) {
+  let areaCount = 0;
+  let temp = 0;
+  let pointer = 0;
+  let pointer2 = height.length-1;
+  for(let m=0; m<=height.length/2; m++){
+      for(let i=pointer+1; i<height.length; i++){
+          if(height[pointer] <= height[i]){
+            temp = height[pointer] * i;
+            // console.log(temp)
+          }
+          if(temp > areaCount){
+              areaCount = temp
+              console.log(areaCount)
+          }
+
+      }    
+      for(let j=pointer2-1; j>=0; j--){
+          if(height[pointer2] <= height[j]){
+             temp = height[pointer2] * ((height.length-j) + 1)
+          }
+          if(temp > areaCount){
+              areaCount = temp
+          }
+
+      }
+      pointer++;
+      pointer--;
+  }
+  console.log(areaCount)
+  return areaCount;
+  
+};
+maxArea([1,8,6,2,5,4,8,3,7])
