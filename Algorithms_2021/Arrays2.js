@@ -362,4 +362,37 @@ var maxArea = function(height) {
   return areaCount;
   
 };
-maxArea([1,8,6,2,5,4,8,3,7])
+// maxArea([1,8,6,2,5,4,8,3,7])
+
+// leetcode
+var validMountainArray = function(arr) {
+  if(arr.length < 3){
+      return false
+  }
+  let temp = 0;
+  let mountainPeak = 0;
+  for (let i=0; i<arr.length; i++){
+      if(arr[i] > temp){
+          temp = arr[i]
+          mountainPeak = i
+      }
+  }
+  let l = 0;
+  let r = arr.length-1;
+  while(l < mountainPeak){
+      if(!(arr[l+1] > arr[l])){ 
+          return false
+      }
+      l++;
+  }
+  while(r > mountainPeak){
+      if(!(arr[r-1] > arr[r])){
+          return false
+      }
+      r--;
+  }
+  console.log(true)
+  return true   
+  
+};
+validMountainArray([0,1,2,3,4,5,6,7,8,9])
