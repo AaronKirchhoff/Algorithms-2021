@@ -396,3 +396,22 @@ var validMountainArray = function(arr) {
   
 };
 validMountainArray([0,1,2,3,4,5,6,7,8,9])
+
+
+// leetcode deck of cards, wrong question answered
+var hasGroupsSizeX = function(deck) {
+  if(deck.length < 2 || deck.length % 2 != 0){
+      return false
+  }
+  let sorted = deck.sort(function (a,b) {return a-b});
+  let left = 0;
+  let right = 1;
+  while(sorted.length){
+      if(sorted[left] == sorted[right]){
+          sorted.splice(left,2);
+      } else {
+          return false
+      }
+  }
+  return true   
+};
