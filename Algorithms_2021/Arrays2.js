@@ -395,7 +395,7 @@ var validMountainArray = function(arr) {
   return true   
   
 };
-validMountainArray([0,1,2,3,4,5,6,7,8,9])
+// validMountainArray([0,1,2,3,4,5,6,7,8,9])
 
 
 // leetcode deck of cards, wrong question answered
@@ -415,3 +415,26 @@ var hasGroupsSizeX = function(deck) {
   }
   return true   
 };
+
+
+// leetcode 121 buy stock
+var maxProfit = function(prices) {
+  let result = []
+  for(let i=0; i<prices.length-1; i++){
+      for( let j=i+1; j<prices.length; j++){
+          if(prices[j] > prices[i]){
+              result.push(prices[j] - prices[i])
+          }
+      }
+  }
+  // console.log(result)
+  // if(result == 0){
+  //   console.log(0)
+  //   // return 0
+  // } else {
+  //   console.log(Math.max(...result))
+  // }
+  console.log(result == 0 ? 0 : Math.max(...result))
+  return result == 0 ? 0 : Math.max(...result)    
+};
+maxProfit([7,6,4,3,1])
